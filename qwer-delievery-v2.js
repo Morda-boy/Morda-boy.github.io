@@ -4,8 +4,9 @@ $(window).load(function() {
 	$("[name='adress']").attr("required", "true");
 	$("[name='adress']").attr('id', 'suggestions');
 	// $("[name='adress']").attr('data-msg', 'Пожалуйста, укажите адрес полностью: улица, дом, квартира');
+    console.log('hello');
+
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
-console.log('hello');
 
 
 // $("#suggestions").attr("title","Пожалуйста, укажите адрес полностью: улица, дом, квартира");
