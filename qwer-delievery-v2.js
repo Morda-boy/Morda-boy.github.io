@@ -201,7 +201,8 @@ function init() {
 				
 			if (polygon) {
 				console.log(polygon.properties.get('description'));
-				
+                let sumDelive = polygon.properties.get('description').match(/\d+/); // Ищем цифры!
+				console.log(sumDelive);
 				
 				
 				//!
