@@ -5,7 +5,7 @@ $(window).load(function() {
 	$("[name='adress']").attr('id', 'suggestions');
 	// $("[name='adress']").attr('data-msg', 'Пожалуйста, укажите адрес полностью: улица, дом, квартира');
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
-console.log('hello');
+console.log(tip_address);
 
 // $("#suggestions").attr("title","Пожалуйста, укажите адрес полностью: улица, дом, квартира");
 // $("#suggestions").attr("data-toggle","tooltip");
