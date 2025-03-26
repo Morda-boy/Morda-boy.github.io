@@ -205,6 +205,9 @@ function init() {
 			    console.log(sumDelive);
 				var numEl22 = parseInt(sumDelive.match(/\d+/))
 				console.log(numEl22);
+                var summcart = +tcart.prodamount;
+                console.log(summcart);
+
 				//!
 				// $('<div class="t-text" name="dostavka_info"><br></div>').insertBefore("[data-input-lid='1606970309593'] > t-input-block");
 				
