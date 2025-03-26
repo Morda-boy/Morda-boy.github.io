@@ -203,8 +203,8 @@ function init() {
 				console.log(polygon.properties.get('description'));
                var sumDelive = polygon.properties.get('description')
 			    console.log(sumDelive);
-				
-				
+				var numEl22 = parseInt(sumDelive.match(/\d+/))
+				console.log(numEl22);
 				//!
 				// $('<div class="t-text" name="dostavka_info"><br></div>').insertBefore("[data-input-lid='1606970309593'] > t-input-block");
 				
