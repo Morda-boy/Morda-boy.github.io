@@ -201,7 +201,7 @@ function init() {
 				
 			if (polygon) {
 				console.log(polygon.properties.get('description'));
-                let sumDelive = polygon.properties.get('description').match(/\d+/); // Ищем цифры!
+                //let sumDelive = polygon.properties.get('description').match(/\d+/); // Ищем цифры!
 				console.log(sumDelive);
 				
 				
@@ -211,6 +211,8 @@ function init() {
 
 				// $("[data-input-lid='1606970309593']").append('<div class="t-text" name="dostavka_info"><br></div>');
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
+                console.log('tst');
+
 				//!
 				
 				
