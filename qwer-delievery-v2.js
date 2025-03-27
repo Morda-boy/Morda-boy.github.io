@@ -7,6 +7,8 @@ $(window).load(function() {
     console.log('hello');
 
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
+$('<div class="t-text" name="dostavka_summ" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adostavka_info']");
+
 
 
 // $("#suggestions").attr("title","Пожалуйста, укажите адрес полностью: улица, дом, квартира");
@@ -201,7 +203,9 @@ function init() {
 				
 			if (polygon) {
 				console.log(polygon.properties.get('description'));
-               var sumDelive = polygon.properties.get('description')
+             
+             
+                var sumDelive = polygon.properties.get('description')
 			    console.log(sumDelive);
 				var numEl22 = parseInt(sumDelive.match(/\d+/))
 				console.log(numEl22);
@@ -214,6 +218,8 @@ function init() {
 
 				// $("[data-input-lid='1606970309593']").append('<div class="t-text" name="dostavka_info"><br></div>');
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
+                $("[name='dostavka_summ'").html(summcart);
+
                 console.log('tst');
 
 				//!
