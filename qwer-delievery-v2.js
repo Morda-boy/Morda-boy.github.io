@@ -7,7 +7,7 @@ $(window).load(function() {
     console.log('hello');
 
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
-$('<div class="t-text" name="dostavka_summ" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adostavka_info']");
+$('<div class="t-text" name="dostavka_summ" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='dostavka_info']");
 
 
 
