@@ -236,6 +236,9 @@ function init() {
 				console.log(deliveryflat);
  
 				$('.t-radio_delivery:eq(0)').attr("data-delivery-price", deliveryflat );
+				function updateDicoutns(){
+					tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
+				};
 
 			}, 100);
 
