@@ -215,7 +215,6 @@ function init() {
                 console.log(summcart);
 				//Расчитываем сумму сколько докупить до бесплатной доставки
 
-				var sumDokup = numEl22-summcart;
 
 				//!
 				// $('<div class="t-text" name="dostavka_info"><br></div>').insertBefore("[data-input-lid='1606970309593'] > t-input-block");
@@ -225,6 +224,8 @@ function init() {
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
                 
 				if (summcart < numEl22) {
+					var sumDokup = numEl22-summcart;
+
 				$("[name='dostavka_summ'").html(sumDokup);
 				};
 
