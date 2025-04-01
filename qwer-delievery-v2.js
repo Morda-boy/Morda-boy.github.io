@@ -231,9 +231,9 @@ function init() {
 //Пробуем скрыть
 				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 				//Пробуем изменить доставку
-				
+
 				let deliveryflat = 340;       
-				$('.t-radio_delivery:eq(2)').attr("data-delivery-price", deliveryflat );
+				$('.t-radio_delivery:eq(0)').attr("data-delivery-price", deliveryflat );
 
 
 				//! deliev_gk38
