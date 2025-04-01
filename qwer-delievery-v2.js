@@ -223,8 +223,10 @@ function init() {
 
 				// $("[data-input-lid='1606970309593']").append('<div class="t-text" name="dostavka_info"><br></div>');
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
-                $("[name='dostavka_summ'").html(sumDokup);
-
+                
+				if (summcart < numEl22) {
+				$("[name='dostavka_summ'").html(sumDokup);
+				};
 
 				
 
