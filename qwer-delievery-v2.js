@@ -229,9 +229,10 @@ function init() {
 				$("[name='dostavka_summ'").html(sumDokup);
 				};
 
-				
+				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();       
 
-				//!
+
+				//! deliev_gk38
 				
 				
 				
