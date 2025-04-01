@@ -231,11 +231,13 @@ function init() {
 //Пробуем скрыть
 				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 				//Пробуем изменить доставку
-
-				let deliveryflat = 340;      
+				setTimeout(function() { 
+				let deliveryflat = 330;      
 				console.log(deliveryflat);
  
 				$('.t-radio_delivery:eq(0)').attr("data-delivery-price", deliveryflat );
+
+			}, 100);
 
 
 				//! deliev_gk38
