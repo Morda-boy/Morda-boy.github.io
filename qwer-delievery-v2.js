@@ -233,7 +233,7 @@ function init() {
 
 //Пробуем изменить доставку
 (function () {
-	console.log('-------');
+	console.log('++++');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -243,13 +243,48 @@ function init() {
     let discountHint = 'Скидка за самовывоз 10%';
     let discount = 0;
 
-	setTimeout(function() {
-		let descr = document.querySelector('.t706__cartwin-discounts__description li');
-		if(descr!=null){
-		  descr.innerText = discountHint;
-		};
-	}, 500)
 
+	//Главная функция: проверяет, выбран ли нужный способ доставки.
+
+    let pickupOn = false;
+    let firstOpen = true;
+    
+    function checkDelivery(){
+        
+        let deliveryName = document.querySelector('input.t-radio_delivery:checked');
+		console.log(deliveryName);
+
+        if(deliveryName==null) {
+            deliveryName = 0;
+        }else{
+            deliveryName = deliveryName.value;
+            deliveryName = deliveryName.trim()
+        };
+        
+        if( deliveryName==cartNameDelivery  ){
+            
+            setTimeout(function() {
+                let descr = document.querySelector('.t706__cartwin-discounts__description li');
+                if(descr!=null){
+                  descr.innerText = discountHint;
+                };
+            }, 500)
+    
+            if(!pickupOn){
+                activePickup();
+                pickupOn = true;
+            };
+            
+        }else{
+    
+            if(pickupOn || firstOpen){
+                unactivePickup();
+                pickupOn = false;
+                firstOpen = false;
+            };
+              
+        };
+    };
 
    
 })();
