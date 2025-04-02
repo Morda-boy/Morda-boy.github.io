@@ -271,7 +271,8 @@ console.log('---))))))у');
 	//Немного ждем, чтобы корзина успела загрузиться.
 
     setTimeout(function () {
-        
+		console.log('--=====---');
+
         let discountAwait = setInterval(function() {
             if ( window.t_cart__discounts !== void 0  ){
                 clearInterval(discountAwait) 
@@ -302,7 +303,6 @@ console.log('---))))))у');
 
     let pickupOn = false;
     let firstOpen = true;
-	console.log('++++');
     function checkDelivery(){
 		console.log('ХХХХХХХ');
 
