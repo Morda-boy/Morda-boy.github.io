@@ -298,6 +298,8 @@ console.log('---))))))у');
 					console.log('Создаем наблюдатель за изменениями корзины.'); 
                     checkDelivery();
                 });
+				console.log(' no elem');
+
                 observer.observe(elem, {
                     childList: true, 
                     subtree: true, 
