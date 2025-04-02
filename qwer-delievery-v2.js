@@ -298,7 +298,6 @@ console.log('---))))))у');
 					console.log('Создаем наблюдатель за изменениями корзины.'); 
                     checkDelivery();
                 });
-				console.log(' no elem');
 
                 observer.observe(elem, {
                     childList: true, 
@@ -306,6 +305,8 @@ console.log('---))))))у');
                     characterDataOldValue: true
                 });     
             }
+			console.log(' no elem');
+
         }, 100); 
 
     }, 1000); 
