@@ -233,7 +233,7 @@ function init() {
 
 //Пробуем изменить доставку
 (function () {
-	console.log('-----');
+	console.log('---+-');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -248,6 +248,7 @@ function init() {
 
     let pickupOn = false;
     let firstOpen = true;
+	console.log('++++');
 
 	setTimeout(function() {
     function checkDelivery(){
