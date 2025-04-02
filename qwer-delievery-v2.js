@@ -205,14 +205,7 @@ function init() {
 			if (polygon) {
 				console.log(polygon.properties.get('description'));
              
-             //Вычленяем сумму бесплатно доставки
 
-                var sumDelive = polygon.properties.get('description')
-			    console.log(sumDelive);
-				var numEl22 = parseInt(sumDelive.match(/\d+/))
-				console.log(numEl22);
-                var summcart = +tcart.prodamount;
-                console.log(summcart);
 				//Расчитываем сумму сколько докупить до бесплатной доставки
 
 
@@ -223,11 +216,7 @@ function init() {
 				// $("[data-input-lid='1606970309593']").append('<div class="t-text" name="dostavka_info"><br></div>');
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
                 
-				if (summcart < numEl22) {
-					var sumDokup = numEl22-summcart;
 
-				$("[name='dostavka_summ'").html(sumDokup);
-				};
 //Пробуем скрыть
 //				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 

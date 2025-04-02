@@ -72,7 +72,6 @@ console.log('---))))))у');
 
     function unactivePickup(){
         let newDiscount = [];
-        var summcart = 0;
    
         for (let key in discount) {
             if( discount[key].name != dnDelivery   ) newDiscount.push(discount[key]);
@@ -96,28 +95,23 @@ console.log('---))))))у');
 	//Немного ждем, чтобы корзина успела загрузиться.
 
     setTimeout(function () {
-		console.log('--==+==---');
 
+        
         let discountAwait = setInterval(function() {
             if ( window.t_cart__discounts !== void 0  ){
                 clearInterval(discountAwait) 
                 discount = t_cart__discounts;
-                console.log(discount);
             }
         }, 100);   
-		console.log('discount');
 
-		console.log(discount);
-
+        
 
         let tcartAwait = setInterval(function() {
-			console.log(tcartAwait);
-
+ 
 
             
             let elem  = document.querySelector('.t706__cartwin-prodamount');
-			console.log('elem');
-			console.log(elem);
+
 
             if (elem !== void 0  ){
                 clearInterval(tcartAwait) 
@@ -133,7 +127,6 @@ console.log('---))))))у');
                     characterDataOldValue: true
                 });     
             }
-			console.log(' no elem');
 
         }, 100); 
 
@@ -145,7 +138,33 @@ var delivTrim;
     let firstOpen = true;
     function checkDelivery(){
 		console.log('ХХХХХХХ');
+        const element_GK = document.querySelector('[name="dostavka_info"]');
+    console.log(element_GK);
 
+    if (element_GK) {
+        const text_GK = element_GK.textContent; // "Доставка 3000"
+        const match_GK = text_GK.match(/\d+/);
+        const deliveryCost_GK = match_GK ? parseInt(match_GK[0]) : 0;
+        console.log('deliveryCost_GK');
+
+        console.log(deliveryCost_GK);
+
+                     //Вычленяем сумму бесплатно доставки
+
+				var numEl22 = deliveryCost_GK;
+				console.log(numEl22);
+                var summcart = +tcart.prodamount;
+                console.log(summcart);
+
+        if (summcart < numEl22) {
+					var sumDokup = numEl22-summcart;
+
+				$("[name='dostavka_summ'").html(sumDokup);
+				};
+
+    } else {
+        console.warn('Элемент с name="dostavka_info" не найден');
+    }
         let deliveryName = document.querySelector('input.t-radio_delivery:checked');
 	
 		console.log(deliveryName);
