@@ -271,7 +271,7 @@ console.log('---))))))у');
 	//Немного ждем, чтобы корзина успела загрузиться.
 
     setTimeout(function () {
-		console.log('--=====---');
+		console.log('--==+==---');
 
         let discountAwait = setInterval(function() {
             if ( window.t_cart__discounts !== void 0  ){
@@ -280,7 +280,8 @@ console.log('---))))))у');
                 console.log(discount);
             }
         }, 100);   
-        
+		console.log(discount);
+
 
         let tcartAwait = setInterval(function() {
             let elem  = document.querySelector('.t706__cartwin-prodamount');
