@@ -248,7 +248,8 @@ function init() {
 
     let pickupOn = false;
     let firstOpen = true;
-    
+
+	setTimeout(function() {
     function checkDelivery(){
 		console.log('++++');
 
@@ -286,8 +287,9 @@ function init() {
             };
               
         };
+	
     };
-
+}, 500)
    
 })();
 
