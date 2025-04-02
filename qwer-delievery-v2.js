@@ -232,8 +232,9 @@ function init() {
 //				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 
 //Пробуем изменить доставку
+(function () {
 
-console.log('---+++++');
+console.log('---))))))у');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -243,13 +244,66 @@ console.log('---+++++');
     let discountHint = 'Скидка за самовывоз 10%';
     let discount = 0;
 
+	//Функция, которая отключает скидку за самовывоз.
+
+    function unactivePickup(){
+        let newDiscount = [];
+        
+        for (let key in discount) {
+            if( discount[key].name != dnDelivery   ) newDiscount.push(discount[key]);
+        };
+        
+        t_cart__discounts = newDiscount;
+        updateDicoutns();
+
+    };
+//Противоположная функция: включает скидку за самовывоз.
+	function activePickup(){
+        t_cart__discounts = discount;
+        updateDicoutns();
+    };
+
+//Эта функция перерисовывает корзину, пересчитывает общую сумму и сохраняет изменения.
+    function updateDicoutns(){
+        tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
+    };
+
+	//Немного ждем, чтобы корзина успела загрузиться.
+
+    setTimeout(function () {
+        
+        let discountAwait = setInterval(function() {
+            if ( window.t_cart__discounts !== void 0  ){
+                clearInterval(discountAwait) 
+                discount = t_cart__discounts;
+                console.log(discount);
+            }
+        }, 100);   
+        
+
+        let tcartAwait = setInterval(function() {
+            let elem  = document.querySelector('.t706__cartwin-prodamount');
+            if (elem !== void 0  ){
+                clearInterval(tcartAwait) 
+                let observer = new MutationObserver(mutationRecords => {
+                    checkDelivery();
+                });
+                observer.observe(elem, {
+                    childList: true, 
+                    subtree: true, 
+                    characterDataOldValue: true
+                });     
+            }
+        }, 100); 
+
+    }, 1000); 
 
 	//Главная функция: проверяет, выбран ли нужный способ доставки.
 
     let pickupOn = false;
     let firstOpen = true;
 	console.log('++++');
-
+    function checkDelivery(){
 		console.log('ХХХХХХХ');
 
         let deliveryName = document.querySelector('input.t-radio_delivery:checked');
@@ -288,7 +342,10 @@ console.log('---+++++');
             };
               
         };
-	
+	};
+
+	})();
+
    
 
 				//! deliev_gk38
