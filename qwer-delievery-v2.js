@@ -233,7 +233,7 @@ function init() {
 
 //Пробуем изменить доставку
 
-console.log('---++=-');
+console.log('---===-');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -254,7 +254,7 @@ console.log('---++=-');
 
         let deliveryName = document.querySelector('input.t-radio_delivery:checked');
 	
-		console.log('=========');
+		console.log(deliveryName);
 
         if(deliveryName==null) {
             deliveryName = 0;
