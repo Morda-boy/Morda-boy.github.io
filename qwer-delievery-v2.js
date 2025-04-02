@@ -250,7 +250,6 @@ function init() {
     let firstOpen = true;
 	console.log('++++');
 
-	setTimeout(function() {
     function checkDelivery(){
 		console.log('ХХХХХХХ');
 
@@ -290,7 +289,6 @@ function init() {
         };
 	
     };
-}, 500)
    
 })();
 
