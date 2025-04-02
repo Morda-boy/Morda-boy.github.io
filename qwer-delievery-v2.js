@@ -280,14 +280,22 @@ console.log('---))))))у');
                 console.log(discount);
             }
         }, 100);   
+		console.log('discount');
+
 		console.log(discount);
 
 
         let tcartAwait = setInterval(function() {
+			console.log(dtcartAwait);
             let elem  = document.querySelector('.t706__cartwin-prodamount');
+			console.log('elem');
+			console.log(elem);
+
             if (elem !== void 0  ){
                 clearInterval(tcartAwait) 
+
                 let observer = new MutationObserver(mutationRecords => {
+					console.log('Создаем наблюдатель за изменениями корзины.'); 
                     checkDelivery();
                 });
                 observer.observe(elem, {
