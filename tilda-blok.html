@@ -46,7 +46,6 @@
 $.getScript( "https://morda-boy.github.io/qwer-delievery-v2.js" )
 //$.getScript( "https://hitag.ru/files/hongkong/qwer-delievery.js" )
 
-var summcart;
 
   .done(function( script, textStatus ) {
 	//console.log( textStatus );
@@ -73,7 +72,8 @@ console.log('---))))))у');
 
     function unactivePickup(){
         let newDiscount = [];
-        
+        var summcart = 0;
+   
         for (let key in discount) {
             if( discount[key].name != dnDelivery   ) newDiscount.push(discount[key]);
         };
@@ -113,12 +113,6 @@ console.log('---))))))у');
         let tcartAwait = setInterval(function() {
 			console.log(tcartAwait);
 
-
-			if (summcart < numEl22) {
-					var sumDokup = numEl22-summcart;
-
-				$("[name='dostavka_summ'").html(sumDokup);
-				};
 
             
             let elem  = document.querySelector('.t706__cartwin-prodamount');
