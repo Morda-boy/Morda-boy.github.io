@@ -111,6 +111,15 @@ console.log('---))))))у');
 
         let tcartAwait = setInterval(function() {
 			console.log(tcartAwait);
+
+
+			if (summcart < numEl22) {
+					var sumDokup = numEl22-summcart;
+
+				$("[name='dostavka_summ'").html(sumDokup);
+				};
+
+            
             let elem  = document.querySelector('.t706__cartwin-prodamount');
 			console.log('elem');
 			console.log(elem);
@@ -136,7 +145,7 @@ console.log('---))))))у');
     }, 1000); 
 
 	//Главная функция: проверяет, выбран ли нужный способ доставки.
-
+var delivTrim;
     let pickupOn = false;
     let firstOpen = true;
     function checkDelivery(){
@@ -151,11 +160,17 @@ console.log('---))))))у');
         }else{
             deliveryName = deliveryName.value;
             deliveryName = deliveryName.trim()
-			console.log(deliveryName);
+			
+            delivTrim = deliveryName.substring(0, 9);
+            delivTrim =  delivTrim.trim()
+            console.log('deliveryName');
+            console.log(delivTrim);
 
         };
         
-        if( deliveryName==cartNameDelivery  ){
+        if( delivTrim==cartNameDelivery  ){
+            
+            console.log('YYYYYY');
             
             setTimeout(function() {
                 let descr = document.querySelector('.t706__cartwin-discounts__description li');
