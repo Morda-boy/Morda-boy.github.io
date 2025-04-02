@@ -250,8 +250,10 @@ function init() {
     let firstOpen = true;
     
     function checkDelivery(){
-        
+		console.log('++++');
+
         let deliveryName = document.querySelector('input.t-radio_delivery:checked');
+	
 		console.log(deliveryName);
 
         if(deliveryName==null) {
