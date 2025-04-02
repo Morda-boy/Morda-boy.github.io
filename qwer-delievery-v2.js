@@ -232,8 +232,8 @@ function init() {
 //				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 
 //Пробуем изменить доставку
-(function () {
-	console.log('---==-');
+
+console.log('---=+=-');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -290,7 +290,6 @@ function init() {
 	
     };
    
-})();
 
 				//! deliev_gk38
 				
