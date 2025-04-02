@@ -237,15 +237,20 @@ function init() {
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
-    
     //Название доставки в корзине
     let cartNameDelivery = 'Самовывоз';
-    
-    //Подпись для подсказки в корзине
+        //Подпись для подсказки в корзине
     let discountHint = 'Скидка за самовывоз 10%';
-
-
     let discount = 0;
+
+	setTimeout(function() {
+		let descr = document.querySelector('.t706__cartwin-discounts__description li');
+		if(descr!=null){
+		  descr.innerText = discountHint;
+		};
+	}, 500)
+
+
    
 })();
 
