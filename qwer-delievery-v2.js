@@ -286,7 +286,7 @@ console.log('---))))))у');
 
 
         let tcartAwait = setInterval(function() {
-			console.log(dtcartAwait);
+			console.log(tcartAwait);
             let elem  = document.querySelector('.t706__cartwin-prodamount');
 			console.log('elem');
 			console.log(elem);
