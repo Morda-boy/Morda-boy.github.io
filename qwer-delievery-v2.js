@@ -233,7 +233,7 @@ function init() {
 
 //Пробуем изменить доставку
 
-console.log('---===-');
+console.log('---+++++');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -261,6 +261,8 @@ console.log('---===-');
         }else{
             deliveryName = deliveryName.value;
             deliveryName = deliveryName.trim()
+			console.log(deliveryName);
+
         };
         
         if( deliveryName==cartNameDelivery  ){
