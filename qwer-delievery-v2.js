@@ -233,7 +233,7 @@ function init() {
 
 //Пробуем изменить доставку
 
-console.log('---=+=-');
+console.log('---++=-');
 
     //Название скидки в системе
     let dnDelivery = 'Самовывоз 10%';
@@ -250,7 +250,6 @@ console.log('---=+=-');
     let firstOpen = true;
 	console.log('++++');
 
-    function checkDelivery(){
 		console.log('ХХХХХХХ');
 
         let deliveryName = document.querySelector('input.t-radio_delivery:checked');
@@ -288,7 +287,6 @@ console.log('---=+=-');
               
         };
 	
-    };
    
 
 				//! deliev_gk38
