@@ -224,7 +224,8 @@ function init() {
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
                 
 				if (summcart < numEl22) {
-					var sumDokup = numEl22-summcart;
+					let sumDokup = numEl22-summcart;
+					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
 				};

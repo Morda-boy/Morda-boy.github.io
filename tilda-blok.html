@@ -152,15 +152,19 @@ var delivTrim;
                      //Вычленяем сумму бесплатно доставки
 
 				var numEl22 = deliveryCost_GK;
-				console.log(numEl22);
-                var summcart = +tcart.prodamount;
-                console.log(summcart);
 
+                var summcart = +tcart.prodamount;
+
+                
         if (summcart < numEl22) {
-					var sumDokup = numEl22-summcart;
+					let sumDokup = numEl22-summcart;
+                    sumDokup = `До бесплатной доставки не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
-				};
+				} else { 
+
+                    $("[name='dostavka_summ'").html('');
+                }
 
     } else {
         console.warn('Элемент с name="dostavka_info" не найден');
