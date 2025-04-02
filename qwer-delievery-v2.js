@@ -229,19 +229,113 @@ function init() {
 				$("[name='dostavka_summ'").html(sumDokup);
 				};
 //Пробуем скрыть
-				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
-				//Пробуем изменить доставку
-				setTimeout(function() { 
-				let deliveryflat = 330;      
-				console.log(deliveryflat);
- 
-				$('.t-radio_delivery:eq(0)').attr("data-delivery-price", deliveryflat );
-				function updateDicoutns(){
-					tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
-				};
+//				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
 
-			}, 100);
+//Пробуем изменить доставку
+(function () {
 
+    //Название скидки в системе
+    let dnDelivery = 'Самовывоз 10%';
+    
+    //Название доставки в корзине
+    let cartNameDelivery = 'Самовывоз';
+    
+    //Подпись для подсказки в корзине
+    let discountHint = 'Скидка за самовывоз 10%';
+
+
+    let discount = 0;
+    
+    function unactivePickup(){
+        let newDiscount = [];
+        
+        for (let key in discount) {
+            if( discount[key].name != dnDelivery   ) newDiscount.push(discount[key]);
+        };
+        
+        t_cart__discounts = newDiscount;
+        updateDicoutns();
+
+    };
+    
+    function activePickup(){
+        t_cart__discounts = discount;
+        updateDicoutns();
+    };
+    
+    function updateDicoutns(){
+        tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
+    };
+    
+    
+    setTimeout(function () {
+        
+        let discountAwait = setInterval(function() {
+            if ( window.t_cart__discounts !== void 0  ){
+                clearInterval(discountAwait) 
+                discount = t_cart__discounts;
+                console.log(discount);
+            }
+        }, 100);   
+        
+
+        let tcartAwait = setInterval(function() {
+            let elem  = document.querySelector('.t706__cartwin-prodamount');
+            if (elem !== void 0  ){
+                clearInterval(tcartAwait) 
+                let observer = new MutationObserver(mutationRecords => {
+                    checkDelivery();
+                });
+                observer.observe(elem, {
+                    childList: true, 
+                    subtree: true, 
+                    characterDataOldValue: true
+                });     
+            }
+        }, 100); 
+
+    }, 1000); 
+    
+    
+    let pickupOn = false;
+    let firstOpen = true;
+    
+    function checkDelivery(){
+        
+        let deliveryName = document.querySelector('input.t-radio_delivery:checked');
+        
+        if(deliveryName==null) {
+            deliveryName = 0;
+        }else{
+            deliveryName = deliveryName.value;
+            deliveryName = deliveryName.trim()
+        };
+        
+        if( deliveryName==cartNameDelivery  ){
+            
+            setTimeout(function() {
+                let descr = document.querySelector('.t706__cartwin-discounts__description li');
+                if(descr!=null){
+                  descr.innerText = discountHint;
+                };
+            }, 500)
+    
+            if(!pickupOn){
+                activePickup();
+                pickupOn = true;
+            };
+            
+        }else{
+    
+            if(pickupOn || firstOpen){
+                unactivePickup();
+                pickupOn = false;
+                firstOpen = false;
+            };
+              
+        };
+    };
+})();
 
 				//! deliev_gk38
 				
