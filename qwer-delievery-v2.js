@@ -256,8 +256,8 @@ function init() {
 
 				$("[name='dostavka_summ'").html(sumDokup);
                 let deliveryflat = 0.1*numEl22;
-				$('.t-radio_delivery:eq(2)').attr("data-delivery-price", deliveryflat );
 				$('.t-radio_delivery:eq(3)').attr("data-delivery-price", deliveryflat );
+				$('.t-radio_delivery:eq(4)').attr("data-delivery-price", deliveryflat );
 				
 
 
