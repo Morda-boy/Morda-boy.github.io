@@ -229,7 +229,8 @@ function init() {
 
 				$("[name='dostavka_summ'").html(sumDokup);
                 let deliveryflat = numEl22-1500;
-				
+				console.log('Перерисовывает');
+
 
 				$('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', deliveryflat );
 
