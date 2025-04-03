@@ -235,6 +235,7 @@ function init() {
 
 				if (typeof tcart !== 'undefined' && typeof tcart__reDrawCart === 'function') {
 					tcart__reDrawCart(); // Перерисовывает корзину и пересчитывает сумму
+					console.log('Перерисовывает корзину');
 				}
 				};
 //Пробуем скрыть
