@@ -10,6 +10,18 @@ $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: 
 
 $('<div class="t-text" name="dostavka_summ" style="margin-top: 9px;font-style: italic; font-weight: bold; color: red;"><br></div>').insertAfter("[name='dostavka_info']");
 
+//----------------------------------------------------------------------
+
+//Скрываем доп поле с лоставкой до квартиры       
+
+$(".t-radio_delivery:eq(4)").parent('.t-radio__control').hide();       
+$( ".t-radio_delivery" ).click(function() {
+//Удаляем у всех видов спец класс
+$('.t-radio_delivery').removeClass('choose');     
+//Добавляем спец класс к активной  
+$(this).addClass('choose');
+}); 
+//----------------------------------------------------------------------
 
 
 // $("#suggestions").attr("title","Пожалуйста, укажите адрес полностью: улица, дом, квартира");
