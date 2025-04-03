@@ -228,6 +228,12 @@ function init() {
 					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
+                let deliveryflat = snumEl22-1500;
+
+				
+
+				$('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', deliveryflat );
+
 				};
 //Пробуем скрыть
 //				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
