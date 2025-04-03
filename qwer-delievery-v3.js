@@ -214,30 +214,7 @@ function init() {
 				polygon = deliveryZones.searchContaining(coords).get(0);
 				
 			if (polygon) {
-
-				setTimeout(function() { 				
-             //Вычленяем сумму бесплатно доставки
-
-                let sumDelive = polygon.properties.get('description')
-
-				let numEl22 = parseInt(sumDelive.match(/\d+/))
-
-				let summcart = +tcart.prodamount;
-
-				//Расчитываем сумму сколько докупить до бесплатной доставки
-
-
-
-	
-
-	
-
-
-
-
-
-
-
+				console.log(polygon.properties.get('description'));
 
 
 
@@ -246,63 +223,7 @@ function init() {
 
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
                 
-				if (summcart < numEl22) {
-					let sumDokup = numEl22-summcart;
-					console.log('Перерисовывает');
-	
-
-				sumDokup = `Добесплатной доставки в корзине не хватает ${sumDokup} руб`;
-
-				$("[name='dostavka_summ'").html(sumDokup);
-                let deliveryflat = 0.1*numEl22;
-				$('.t-radio_delivery:eq(3)').attr("data-delivery-price", deliveryflat );
-				$('.t-radio_delivery:eq(4)').attr("data-delivery-price", deliveryflat );
-				
-//-----------------------------------------------------------------------------------
-
-
-setTimeout(function() { 
-	//Если первая доставка до квартиры выбрана      
-		   if ($(".t-radio_delivery:eq(3)").hasClass("choose")) {
-	//То активируем вторую доставку до квартиры           
-		   $(".t-radio_delivery:eq(4)")[0].click(); 
-	//Скрываем первую       
-		   $(".t-radio_delivery:eq(3)").parent('.t-radio__control').hide();
-	//Показываем вторую       
-		   $(".t-radio_delivery:eq(4)").parent('.t-radio__control').show();};   
-		  
-	//Если вторая доставка до квартиры выбрана      
-		   if ($(".t-radio_delivery:eq(4)").hasClass("choose")) {
-	//То активируем первую доставку до квартиры                 
-		   $(".t-radio_delivery:eq(3)")[0].click(); 
-	//Скрываем вторую        
-		   $(".t-radio_delivery:eq(4)").parent('.t-radio__control').hide();
-	//Показывем первую       
-		   $(".t-radio_delivery:eq(3)").parent('.t-radio__control').show(); };   
-	  }, 200); 
-
-				
-
-							console.log('Перерисовывает 1111 корзину');
-
-
-						};
-						else {
-							$("[name='dostavka_summ'").html('У вас v2 бесплатная доставка');
-
-							$('.t-radio_delivery:eq(3)').attr("data-delivery-price", 0 );
-							$('.t-radio_delivery:eq(4)').attr("data-delivery-price", 0 );
-
-						}
-					}, 100);
-
-				//! deliev_gk38
-				
-				
-				
-				
-				
-				// Уменьшаем прозрачность всех полигонов, кроме того, в который входят переданные координаты.
+		// Уменьшаем прозрачность всех полигонов, кроме того, в который входят переданные координаты.
 				deliveryZones.setOptions('fillOpacity', 0.4);
 				polygon.options.set('fillOpacity', 0.8);
 				// Перемещаем метку с подписью в переданные координаты и перекрашиваем её в цвет полигона.
@@ -366,12 +287,7 @@ setTimeout(function() {
 		
 	}
 		
-	// $.ajax({
-	// 		url:'https://xn--c1abdm0av.xn--p1acf/d/%D0%94%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BA%D0%B0%20_%D0%93%D0%BE%D0%BD%D0%BA%D0%BE%D0%BD%D0%B3__18-12-2020_10-48-09.geojson',
-	// //    url: 'https://sandbox.api.maps.yandex.net/examples/ru/2.1/delivery_zones/data.geojson',
-	//     dataType: 'json',
-	//     success: onZonesLoad
-	// });
+
 	
 
 	$.getJSON('https://morda-boy.github.io/map-hongkong-2025-01.geojson', function(data) {
@@ -381,13 +297,6 @@ setTimeout(function() {
 	  // obj=jQuery.parseJSON(data);
 	  onZonesLoad(obj);
 	});
-			//  alert( obj.name);
-	/* $.getJSON(url, function (data) {
-		alert(data.name);
-		onZonesLoad(data);
-	}); */
-	/* var json = jQuery.parseJSON() */
-	/* console.log(json) */
-	/* onZonesLoad(json) */
+			
 }
 });
