@@ -235,8 +235,8 @@ function init() {
 				$('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', deliveryflat );
 
 //				if (typeof tcart !== 'undefined' && typeof tcart__reDrawCart === 'function') {
-					tcart__reDrawCart(); // Перерисовывает корзину и пересчитывает сумму
-					console.log('Перерисовывает корзину');
+	tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
+	console.log('Перерисовывает корзину');
 	//			}
 				};
 //Пробуем скрыть
