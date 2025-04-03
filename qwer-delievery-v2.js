@@ -215,24 +215,36 @@ function init() {
 				polygon = deliveryZones.searchContaining(coords).get(0);
 				
 			if (polygon) {
-				console.log(polygon.properties.get('description'));
-             
+
+				setTimeout(function() { 				
              //Вычленяем сумму бесплатно доставки
 
-                var sumDelive = polygon.properties.get('description')
-			    console.log(sumDelive);
-				var numEl22 = parseInt(sumDelive.match(/\d+/))
-				console.log(numEl22);
-                var summcart = +tcart.prodamount;
-                console.log(summcart);
+                let sumDelive = polygon.properties.get('description')
+
+				let numEl22 = parseInt(sumDelive.match(/\d+/))
+
+				let summcart = +tcart.prodamount;
+
 				//Расчитываем сумму сколько докупить до бесплатной доставки
 
 
-				//!
-				// $('<div class="t-text" name="dostavka_info"><br></div>').insertBefore("[data-input-lid='1606970309593'] > t-input-block");
-				
 
-				// $("[data-input-lid='1606970309593']").append('<div class="t-text" name="dostavka_info"><br></div>');
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
 				$("[name='dostavka_info'").html(polygon.properties.get('description'));
                 
 				if (summcart < numEl22) {
@@ -240,25 +252,22 @@ function init() {
 					console.log('Перерисовывает');
 	
 
-					sumDokup = `Добесплатной доставки в корзине не хватает ${sumDokup} руб`;
+				sumDokup = `Добесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
                 let deliveryflat = 0.1*numEl22;
-				console.log('Перерисовывает');
+				$('.t-radio_delivery:eq(2)').attr("data-delivery-price", deliveryflat );
+				$('.t-radio_delivery:eq(3)').attr("data-delivery-price", deliveryflat );
+				
 
 
-				$('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', deliveryflat );
-
+				
 
 							console.log('Перерисовывает 1111 корзину');
 
 
 						};
-//Пробуем скрыть
-//				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
-
-
-   
+					}, 100);
 
 				//! deliev_gk38
 				
