@@ -232,9 +232,10 @@ function init() {
 				
 
 				$('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', deliveryflat );
-				
-				$('input[name="deliveryvar"]:checked').trigger('change');
 
+				if (typeof tcart !== 'undefined' && typeof tcart__reDrawCart === 'function') {
+					tcart__reDrawCart(); // Перерисовывает корзину и пересчитывает сумму
+				}
 				};
 //Пробуем скрыть
 //				$(".t-radio_delivery:eq(1)").parent('.t-radio__control').hide();
