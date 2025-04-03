@@ -7,235 +7,234 @@
 <!-- Production -->
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
-<link  rel="stylesheet"  href="https://unpkg.com/tippy.js@6/animations/scale.css"/>
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/tippy.js@6/animations/scale.css"
+/>
 <!-- Интегригруем тултипы -->
 
-<script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&coordorder=longlat&apikey=4d7c41f5-5a3a-4bbb-94a1-08030c5f96b8"></script>
-<script type="text/javascript" src="https://yandex.st/jquery/2.2.3/jquery.js"></script>
-<div class="t-container"><div class="t-col t-col_12"><div id="map__0" style="height:678px; border-radius: 30px;"></div></div></div>
+<script
+  type="text/javascript"
+  src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&coordorder=longlat&apikey=4d7c41f5-5a3a-4bbb-94a1-08030c5f96b8"
+></script>
+<script
+  type="text/javascript"
+  src="https://yandex.st/jquery/2.2.3/jquery.js"
+></script>
+<div class="t-container">
+  <div class="t-col t-col_12">
+    <div id="map__0" style="height: 678px; border-radius: 30px"></div>
+  </div>
+</div>
 <style>
-			#map__0 {
-			width: 100%;
-			height: 678px;
-			padding: 0;
-			margin: 0;
-			border-radius: 30px;
+  #map__0 {
+    width: 100%;
+    height: 678px;
+    padding: 0;
+    margin: 0;
+    border-radius: 30px;
+  }
 
-		}
-   
-   .tippy-tooltip.tomato-theme {
-		background-color: tomato;
-		color: white;
-	}
-	.tippy-tooltip.black-theme {
-		background-color: black;
-		color: white;
-	}
+  .tippy-tooltip.tomato-theme {
+    background-color: tomato;
+    color: white;
+  }
+  .tippy-tooltip.black-theme {
+    background-color: black;
+    color: white;
+  }
 </style>
 
 <script>
+  $.getScript("https://morda-boy.github.io/qwer-delievery-v3.js")
 
-$.getScript( "https://morda-boy.github.io/qwer-delievery-v2.js" )
+    .done(function (script, textStatus) {
+      //console.log( textStatus );
+      console.log("delievery ok");
+    })
+    .fail(function (jqxhr, settings, exception) {
+      //$( "div.log" ).text( "Triggered ajaxError handler." );
+      console.log("delievery download fail");
+    });
 
+//---------------------------------------------------------
 
-
-  .done(function( script, textStatus ) {
-	//console.log( textStatus );
-	console.log( "delievery ok");
-  })
-  .fail(function( jqxhr, settings, exception ) {
-	//$( "div.log" ).text( "Triggered ajaxError handler." );
-	console.log( "delievery download fail");
-});
-//Пробуем изменить доставку
-(function () {
-  
-
-
-console.log('---))))))у');
+    //Пробуем изменить доставку
+  (function () {
+    console.log("---))))))у");
 
     //Название скидки в системе
-    let dnDelivery = 'Самовывоз 10%';
+    let dnDelivery = "Самовывоз 10%";
     //Название доставки в корзине
-    let cartNameDelivery = 'Самовывоз';
-        //Подпись для подсказки в корзине
-    let discountHint = 'Скидка за самовывоз 10%';
+    let cartNameDelivery = "Самовывоз";
+    //Подпись для подсказки в корзине
+    let discountHint = "Скидка за самовывоз 10%";
     let discount = 0;
 
-	//Функция, которая отключает скидку за самовывоз.
+    //Функция, которая отключает скидку за самовывоз.
 
-    function unactivePickup(){
-        let newDiscount = [];
-   
-        for (let key in discount) {
-            if( discount[key].name != dnDelivery   ) newDiscount.push(discount[key]);
-        };
-        
-        t_cart__discounts = newDiscount;
-        updateDicoutns();
+    function unactivePickup() {
+      let newDiscount = [];
 
-    };
-//Противоположная функция: включает скидку за самовывоз.
-	function activePickup(){
-        t_cart__discounts = discount;
-        updateDicoutns();
-    };
+      for (let key in discount) {
+        if (discount[key].name != dnDelivery) newDiscount.push(discount[key]);
+      }
 
-//Эта функция перерисовывает корзину, пересчитывает общую сумму и сохраняет изменения.
-    function updateDicoutns(){
-        tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
-    };
+      t_cart__discounts = newDiscount;
+      updateDicoutns();
+    }
 
-	//Немного ждем, чтобы корзина успела загрузиться.
+
+
+    //Противоположная функция: включает скидку за самовывоз.
+    function activePickup() {
+      t_cart__discounts = discount;
+      updateDicoutns();
+    }
+
+    //Эта функция перерисовывает корзину, пересчитывает общую сумму и сохраняет изменения.
+    function updateDicoutns() {
+        tcart__updateTotalProductsinCartObj(),
+        tcart__reDrawTotal(),
+        tcart__saveLocalObj();
+    }
+
+    //Немного ждем, чтобы корзина успела загрузиться.
 
     setTimeout(function () {
+      let discountAwait = setInterval(function () {
+        if (window.t_cart__discounts !== void 0) {
+          clearInterval(discountAwait);
+          discount = t_cart__discounts;
+        }
+      }, 100);
 
-        
-        let discountAwait = setInterval(function() {
-            if ( window.t_cart__discounts !== void 0  ){
-                clearInterval(discountAwait) 
-                discount = t_cart__discounts;
-            }
-        }, 100);   
+      let tcartAwait = setInterval(function () {
+        let elem = document.querySelector(".t706__cartwin-prodamount");
+        console.log("Elem");
+        console.log(elem);
 
-        
+        if (elem !== void 0) {
+          clearInterval(tcartAwait);
 
-        let tcartAwait = setInterval(function() {
- 
+          let observer = new MutationObserver((mutationRecords) => {
+            console.log("Создаем наблюдатель за изменениями корзины.");
+            console.log("Elem");
+            console.log(elem);
+            checkDelivery();
+          });
 
-            
-            let elem  = document.querySelector('.t706__cartwin-prodamount');
-
-
-            if (elem !== void 0  ){
-                clearInterval(tcartAwait) 
-
-                let observer = new MutationObserver(mutationRecords => {
-					console.log('Создаем наблюдатель за изменениями корзины.'); 
-                    checkDelivery();
-                });
-
-                observer.observe(elem, {
-                    childList: true, 
-                    subtree: true, 
-                    characterDataOldValue: true
-                });     
-            }
-
-        }, 100); 
-
-    }, 1000); 
-
-	//Главная функция: проверяет, выбран ли нужный способ доставки.
-var delivTrim;
+          observer.observe(elem, {
+            childList: true,
+            subtree: true,
+            characterDataOldValue: true,
+          });
+        }
+      }, 100);
+    }, 1000);
 
 
     let pickupOn = false;
     let firstOpen = true;
-    function checkDelivery(){
 
+//-------------------------------------------------------
+function xxxx() {
+console.log("ХХХХХХХ");
+      const element_GK = document.querySelector('[name="dostavka_info"]');
+      console.log(element_GK);
 
-		console.log('ХХХХХХХ');
-        const element_GK = document.querySelector('[name="dostavka_info"]');
-    console.log(element_GK);
-
-    if (element_GK) {
+      if (element_GK) {
         const text_GK = element_GK.textContent; // "Доставка 3000"
         const match_GK = text_GK.match(/\d+/);
         const deliveryCost_GK = match_GK ? parseInt(match_GK[0]) : 0;
-        console.log('deliveryCost_GK');
+        console.log("deliveryCost_GK");
 
         console.log(deliveryCost_GK);
 
-                     //Вычленяем сумму бесплатно доставки
+        //Вычленяем сумму бесплатно доставки
 
-				var numEl22 = deliveryCost_GK;
+        var numEl22 = deliveryCost_GK;
 
-                var summcart = +tcart.prodamount;
-
+        var summcart = +tcart.prodamount;
 
         if (summcart < numEl22) {
+          setTimeout(function () {
+            let sumDokup = numEl22 - summcart;
+            sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
-            setTimeout(function() { 
-					let sumDokup = numEl22-summcart;
-                    sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
-
-				$("[name='dostavka_summ'").html(sumDokup);
-                let deliveryflat = 0.1*numEl22;
-                console.log('deliveryflat');
-
-                console.log(deliveryflat);
-
-                
-            }, 100);
-
-
-
-            } else { 
-
-                    $("[name='dostavka_summ'").html('У вас бесплатная доставка');
-                    $('input[name="deliveryvar"][value="Доставка = 250"]').attr('data-delivery-price', 0 );
-
-                }
-
-    } else {
+            $("[name='dostavka_summ'").html(sumDokup);
+            let deliveryflat = 0.1 * numEl22;
+            $(".t-radio_delivery:eq(3)").attr(
+              "data-delivery-price",
+              deliveryflat
+            );
+            $(".t-radio_delivery:eq(4)").attr(
+              "data-delivery-price",
+              deliveryflat
+            );
+          }, 100);
+        } else {
+          $("[name='dostavka_summ'").html("У вас v3 бесплатная доставка");
+          $(".t-radio_delivery:eq(3)").attr("data-delivery-price", 0);
+          $(".t-radio_delivery:eq(4)").attr("data-delivery-price", 0);
+        }
+      } else {
         console.warn('Элемент с name="dostavka_info" не найден');
+      }
     }
-        let deliveryName = document.querySelector('input.t-radio_delivery:checked');
-	
-		console.log(deliveryName);
 
-        if(deliveryName==null) {
-            deliveryName = 0;
-        }else{
-            deliveryName = deliveryName.value;
-            deliveryName = deliveryName.trim()
-			
-            delivTrim = deliveryName.substring(0, 9);
-            delivTrim =  delivTrim.trim()
-            console.log('deliveryName');
-            console.log(delivTrim);
+//-------------------------------------------------------
 
-        };
-        
-        if( delivTrim==cartNameDelivery  ){
-            
-            console.log('YYYYYY');
-            
-            setTimeout(function() {
-                let descr = document.querySelector('.t706__cartwin-discounts__description li');
-                if(descr!=null){
-                  descr.innerText = discountHint;
-                };
-            }, 500)
-    
-            if(!pickupOn){
-                activePickup();
-                pickupOn = true;
-            };
-            
-        }else{
-    
-            if(pickupOn || firstOpen){
-                unactivePickup();
-                pickupOn = false;
-                firstOpen = false;
-            };
-              
-        };
-	};
 
-	})();
+      //Главная функция: проверяет, выбран ли нужный способ доставки.
+  
+    function checkDelivery() {
+        let delivTrim;
 
 
 
 
+      let deliveryName = document.querySelector(
+        "input.t-radio_delivery:checked"
+      );
+
+      console.log(deliveryName);
+
+      if (deliveryName == null) {
+        deliveryName = 0;
+      } else {
+        deliveryName = deliveryName.value;
+        deliveryName = deliveryName.trim();
+
+        delivTrim = deliveryName.substring(0, 9);
+        delivTrim = delivTrim.trim();
+        console.log("deliveryName");
+        console.log(delivTrim);
+      }
+
+      if (delivTrim == cartNameDelivery) {
+        console.log("YYYYYY");
+
+        setTimeout(function () {
+          let descr = document.querySelector(
+            ".t706__cartwin-discounts__description li"
+          );
+          if (descr != null) {
+            descr.innerText = discountHint;
+          }
+        }, 500);
+
+        if (!pickupOn) {
+          activePickup();
+          pickupOn = true;
+        }
+      } else {
+        if (pickupOn || firstOpen) {
+          unactivePickup();
+          pickupOn = false;
+          firstOpen = false;
+        }
+      }
+    }
+  })();
 </script>
-
-
-
-
-
-
-
-

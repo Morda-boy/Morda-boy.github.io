@@ -3,7 +3,6 @@ $(window).load(function() {
 	$("[name='adress']").attr('type', 'text');
 	$("[name='adress']").attr("required", "true");
 	$("[name='adress']").attr('id', 'suggestions');
-	// $("[name='adress']").attr('data-msg', 'Пожалуйста, укажите адрес полностью: улица, дом, квартира');
 
 	
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
@@ -289,6 +288,7 @@ setTimeout(function() {
 
 						};
 						else {
+							$("[name='dostavka_summ'").html('У вас v2 бесплатная доставка');
 
 							$('.t-radio_delivery:eq(3)').attr("data-delivery-price", 0 );
 							$('.t-radio_delivery:eq(4)').attr("data-delivery-price", 0 );
