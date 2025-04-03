@@ -244,6 +244,7 @@ function init() {
 			onsole.log('Перерисовывает ----- корзину');
 		}
 	};				console.log('Перерисовывает ++++ корзину');
+	$('input[name="deliveryvar"]:checked').trigger('change');
 	//			}
 				};
 //Пробуем скрыть
