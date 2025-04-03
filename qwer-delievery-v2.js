@@ -243,7 +243,7 @@ function init() {
 			tcart__reDrawCart();
 			onsole.log('Перерисовывает ----- корзину');
 		}
-	};				console.log('Перерисовывает ++++ корзину');
+	};				console.log('Перерисовывает 000000 корзину');
 	$('input[name="deliveryvar"]:checked').trigger('change');
 	//			}
 				};
