@@ -4,8 +4,8 @@ $(window).load(function() {
 	$("[name='adress']").attr("required", "true");
 	$("[name='adress']").attr('id', 'suggestions');
 	// $("[name='adress']").attr('data-msg', 'Пожалуйста, укажите адрес полностью: улица, дом, квартира');
-    console.log('hello');
 
+	
 $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: italic;"><br></div>').insertAfter("[name='adress']");
 
 $('<div class="t-text" name="dostavka_summ" style="margin-top: 9px;font-style: italic; font-weight: bold; color: red;"><br></div>').insertAfter("[name='dostavka_info']");
@@ -233,7 +233,7 @@ function init() {
 					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
-                let deliveryflat = numEl22-1500;
+                let deliveryflat = 0.05*numEl22;
 				console.log('Перерисовывает');
 
 
