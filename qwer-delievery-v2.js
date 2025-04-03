@@ -233,7 +233,7 @@ function init() {
 					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
-                let deliveryflat = 0.05*numEl22;
+                let deliveryflat = 0.1*numEl22;
 				console.log('Перерисовывает');
 
 
