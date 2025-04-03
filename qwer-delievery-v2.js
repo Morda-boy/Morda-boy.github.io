@@ -239,7 +239,6 @@ function init() {
 
 
 							console.log('Перерисовывает 1111 корзину');
-							tcart__updateTotalProductsinCartObj(),tcart__reDrawTotal(),tcart__saveLocalObj();
 
 
 						};
