@@ -226,6 +226,9 @@ function init() {
 				if (summcart < numEl22) {
 					let sumDokup = numEl22-summcart;
 					console.log('Перерисовывает');
+					let $deliveryOption = $('.t-radio_delivery:eq(2)'); 
+					console.log('$deliveryOption');
+					console.log($deliveryOption);
 
 					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
