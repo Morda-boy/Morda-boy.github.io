@@ -228,7 +228,7 @@ function init() {
 					sumDokup = `До бесплатной доставки в корзине не хватает ${sumDokup} руб`;
 
 				$("[name='dostavka_summ'").html(sumDokup);
-                let deliveryflat = snumEl22-1500;
+                let deliveryflat = numEl22-1500;
 
 				
 
