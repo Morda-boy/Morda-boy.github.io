@@ -241,6 +241,7 @@ function init() {
 		// корзина готова, можно пересчитать
 		if (typeof tcart__reDrawCart === 'function') {
 			tcart__reDrawCart();
+			onsole.log('Перерисовывает ----- корзину');
 		}
 	};				console.log('Перерисовывает ++++ корзину');
 	//			}
