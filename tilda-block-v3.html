@@ -100,38 +100,69 @@
     }
 
     //Немного ждем, чтобы корзина успела загрузиться.
+// Ждем 1 секунду после загрузки страницы (на всякий случай, чтобы всё успело прогрузиться)
+setTimeout(function () {
 
-    setTimeout(function () {
-      let discountAwait = setInterval(function () {
-        if (window.t_cart__discounts !== void 0) {
-          clearInterval(discountAwait);
-          discount = t_cart__discounts;
-        }
-      }, 100);
+// Каждые 100мс проверяем, появилась ли переменная со скидками t_cart__discounts
+let discountAwait = setInterval(function () {
+  if (window.t_cart__discounts !== void 0) {        // Если переменная уже определена
+    clearInterval(discountAwait);                   // Останавливаем проверку
+    discount = t_cart__discounts;                   // Сохраняем текущие скидки в переменную discount
+  }
+}, 100); // Проверяем каждые 100 миллисекунд
 
-      let tcartAwait = setInterval(function () {
-        let elem = document.querySelector(".t706__cartwin-prodamount");
-        console.log("Elem");
-        console.log(elem);
+// Еще один интервал — ждём, пока на странице появятся нужные нам DOM-элементы
+let tcartAwait = setInterval(function () {
+  // Ищем блок с количеством и суммой товаров в корзине
+  let elem = document.querySelector(".t706__cartwin-prodamount");
 
-        if (elem !== void 0) {
-          clearInterval(tcartAwait);
+  // Ищем элемент с name="dostavka_info" — может быть скрытым полем или контейнером
+  let elem2 = document.querySelector("[name='dostavka_info']");
 
-          let observer = new MutationObserver((mutationRecords) => {
-            console.log("Создаем наблюдатель за изменениями корзины.");
-            console.log("Elem");
-            console.log(elem);
-            checkDelivery();
-          });
+  // Логируем найденный элемент в консоль (для отладки)
+  console.log("Elem");
+  console.log(elem);
 
-          observer.observe(elem, {
-            childList: true,
-            subtree: true,
-            characterDataOldValue: true,
-          });
-        }
-      }, 100);
-    }, 1000);
+  // Если хотя бы один элемент найден (elem или elem2)
+  if (elem !== void 0 || elem2 !== void 0) {
+    clearInterval(tcartAwait); // Останавливаем ожидание появления элементов
+
+    // Настройки для отслеживания изменений
+    let config = {
+      childList: true,              // Следить за добавлением/удалением дочерних элементов
+      subtree: true,                // Следить за всеми вложенными элементами, не только верхним уровнем
+      characterData: true,          // Следить за изменениями текста (например, количество товаров)
+      characterDataOldValue: true   // Сохранять старое значение текста
+    };
+
+    // === Наблюдатель для корзины (elem) ===
+    if (elem) {
+      // Создаем наблюдателя, который будет вызывать checkDelivery() при любом изменении в elem
+      let observer1 = new MutationObserver(() => {
+        console.log("Изменения в elem (корзина)"); // Лог в консоль
+        checkDelivery();                           // Вызываем функцию проверки доставки
+      });
+
+      // Запускаем наблюдение за элементом elem с нужными настройками
+      observer1.observe(elem, config);
+    }
+
+    // === Наблюдатель для блока доставки (elem2) ===
+    if (elem2) {
+      // Создаем наблюдателя, который вызывает xxxx() при изменении блока с доставкой
+      let observer2 = new MutationObserver(() => {
+        console.log("Изменения в elem2 (dostavka_info)"); // Лог в консоль
+        xxxx();                                            // Вызываем другую функцию — например, что-то меняем
+      });
+
+      // Запускаем наблюдение за элементом elem2
+      observer2.observe(elem2, config);
+    }
+  }
+
+}, 100); // Проверка каждые 100 миллисекунд
+
+}, 1000); // Запускаем всё через 1 секунду после загрузки страницы
 
 
     let pickupOn = false;
