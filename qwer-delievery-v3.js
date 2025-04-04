@@ -9,6 +9,8 @@ $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: 
 
 $('<div class="t-text" name="dostavka_summ" style="margin-top: 9px;font-style: italic; font-weight: bold; color: red;"><br></div>').insertAfter("[name='dostavka_info']");
 
+console.log('Метка ========');
+
 //----------------------------------------------------------------------
 
 //Скрываем доп поле с лоставкой до квартиры       
@@ -21,7 +23,27 @@ $('.t-radio_delivery').removeClass('choose');
 $(this).addClass('choose');
 }); 
 //----------------------------------------------------------------------
-
+function togglDelivHiden () {
+setTimeout(function() { 
+	//Если первая доставка до квартиры выбрана      
+		   if ($(".t-radio_delivery:eq(3)").hasClass("choose")) {
+	//То активируем вторую доставку до квартиры           
+		   $(".t-radio_delivery:eq(4)")[0].click(); 
+	//Скрываем первую       
+		   $(".t-radio_delivery:eq(3)").parent('.t-radio__control').hide();
+	//Показываем вторую       
+		   $(".t-radio_delivery:eq(4)").parent('.t-radio__control').show();};   
+		  
+	//Если вторая доставка до квартиры выбрана      
+		   if ($(".t-radio_delivery:eq(4)").hasClass("choose")) {
+	//То активируем первую доставку до квартиры                 
+		   $(".t-radio_delivery:eq(3)")[0].click(); 
+	//Скрываем вторую        
+		   $(".t-radio_delivery:eq(4)").parent('.t-radio__control').hide();
+	//Показывем первую       
+		   $(".t-radio_delivery:eq(3)").parent('.t-radio__control').show(); };   
+	  }, 200); 
+    }
 
 // $("#suggestions").attr("title","Пожалуйста, укажите адрес полностью: улица, дом, квартира");
 // $("#suggestions").attr("data-toggle","tooltip");
@@ -223,8 +245,8 @@ function init() {
 
 	$("[name='dostavka_info'").html(polygon.properties.get('description'));
 
-    $('.t-radio_delivery:eq(3)').attr("data-delivery-price", 1 );
-    $('.t-radio_delivery:eq(4)').attr("data-delivery-price", 2 );
+    togglDelivHiden();
+
     console.log('Доставка же');
 
 
