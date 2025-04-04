@@ -9,7 +9,7 @@ $('<div class="t-text" name="dostavka_info" style="margin-top: 10px;font-style: 
 
 $('<div class="t-text" name="dostavka_summ" style="margin-top: 9px;font-style: italic; font-weight: bold; color: red;"><br></div>').insertAfter("[name='dostavka_info']");
 
-console.log('Метка ====-===');
+console.log('Метка ===_-===');
 
 //----------------------------------------------------------------------
 
@@ -244,7 +244,7 @@ function init() {
 
 
 	$("[name='dostavka_info'").html(polygon.properties.get('description'));
-    $(".t-radio_delivery:eq(3)").attr("data-delivery-price", 100);
+
     $(".t-radio_delivery:eq(4)").attr("data-delivery-price", 200);
     togglDelivHiden();
 
