@@ -152,7 +152,7 @@ let tcartAwait = setInterval(function () {
       // Создаем наблюдателя, который вызывает xxxx() при изменении блока с доставкой
       let observer2 = new MutationObserver(() => {
         console.log("Изменения в elem2 (dostavka_info)"); // Лог в консоль
-        xxxx();                                            // Вызываем другую функцию — например, что-то меняем
+        xxxx2();                                            // Вызываем другую функцию — например, что-то меняем
       });
 
       // Запускаем наблюдение за элементом elem2
@@ -169,6 +169,10 @@ let tcartAwait = setInterval(function () {
     let firstOpen = true;
 
 //-------------------------------------------------------
+
+function xxxx2() {
+}
+
 function xxxx() {
 console.log("ХХХХХХХ");
       const element_GK = document.querySelector('[name="dostavka_info"]');

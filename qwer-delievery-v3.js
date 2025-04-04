@@ -221,7 +221,16 @@ function init() {
 
 
 
-				$("[name='dostavka_info'").html(polygon.properties.get('description'));
+	$("[name='dostavka_info'").html(polygon.properties.get('description'));
+
+    $('.t-radio_delivery:eq(3)').attr("data-delivery-price", 1 );
+    $('.t-radio_delivery:eq(4)').attr("data-delivery-price", 2 );
+
+
+
+
+
+
                 
 		// Уменьшаем прозрачность всех полигонов, кроме того, в который входят переданные координаты.
 				deliveryZones.setOptions('fillOpacity', 0.4);
