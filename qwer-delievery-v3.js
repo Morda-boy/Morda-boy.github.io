@@ -225,7 +225,7 @@ function init() {
 
     $('.t-radio_delivery:eq(3)').attr("data-delivery-price", 1 );
     $('.t-radio_delivery:eq(4)').attr("data-delivery-price", 2 );
-
+    console.log('Доставка же');
 
 
 
