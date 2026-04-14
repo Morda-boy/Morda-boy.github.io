@@ -206,7 +206,7 @@ function init() {
 				// Адрес в зоне — разблокируем кнопку
 				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
 			} else {
-				$("[name='dostavka_info'").html("К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+79148959797' style=''>95-97-97</a>");
+				$("[name='dostavka_info'").html("<span style='color:red'>К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+79148959797' style='color:red'>95-97-97</a></span>");
 				// Адрес вне зоны — блокируем кнопку
 				$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 			}
