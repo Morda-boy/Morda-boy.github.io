@@ -284,7 +284,7 @@ function init() {
 	// });
 	
 
-	$.getJSON('https://morda-boy.github.io/map-hongkong-2025-02.geojson', function(data) {
+	$.getJSON('https://morda-boy.github.io/gk38-gusev-14-04-2026.geojson', function(data) {
 		
 	  console.log(data, obj);
 	  obj=data;
