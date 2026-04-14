@@ -95,7 +95,7 @@ function init() {
 		// *** НОВОЕ: при смене варианта доставки — разблокируем кнопку ***
 		$('input[name="deliveryvar"]').on('change', function() {
 			if ($(this).val() !== 'Доставка (до подъезда)') {
-				$('button[type="submit"]').prop('disabled', false).css('opacity', '1');
+				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
 				$("[name='dostavka_info']").html('');
 			}
 		});
@@ -240,23 +240,23 @@ function init() {
 					});
 				}
 			} else {
-				$("[name='dostavka_info'").html("К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+73952746486' style=''>746-486</a>");
+				$("[name='dostavka_info'").html("К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+73952746486' style=''>95-97-97</a>");
 			}
 
 			// *** НОВОЕ: дополнительно проверяем по нашему GeoJSON и блокируем кнопку ***
 			var lon = parseFloat(suggestion.data.geo_lon);
 			var lat = parseFloat(suggestion.data.geo_lat);
-			$('button[type="submit"]').prop('disabled', true).css('opacity', '0.5');
+			$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 
 			isInAnyZone(lon, lat, function(inZone) {
 				if (inZone) {
-					$('button[type="submit"]').prop('disabled', false).css('opacity', '1');
+					$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
 				} else {
 					$("[name='dostavka_info']").html(
 						'<span style="color:red">Ваш адрес не входит в зону доставки. ' +
 						'Позвоните нам: <a href="tel:+73952959797">95-97-97</a></span>'
 					);
-					$('button[type="submit"]').prop('disabled', true).css('opacity', '0.5');
+					$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 				}
 			});
 		},
