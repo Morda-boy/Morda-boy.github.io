@@ -56,14 +56,20 @@ function init() {
 			obj.properties.set('balloonContent', obj.properties.get('description'));
 		});
 
-		// При смене варианта доставки — разблокируем кнопку
+		// При смене варианта доставки — разблокируем или блокируем кнопку
 		$('input[name="deliveryvar"]').on('change', function() {
 			if ($(this).val() !== 'Доставка (до подъезда)') {
+				// Самовывоз — разблокируем
 				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
+				$("[name='dostavka_info']").html('');
+			} else {
+				// Вернулись на доставку — блокируем пока не выберут адрес
+				$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 				$("[name='dostavka_info']").html('');
 			}
 		});
 
+		
 		// Проверим попадание результата поиска в одну из зон доставки.
 		searchControl.events.add('resultshow', function (e) {
 			console.log("еее  бой");
@@ -206,7 +212,7 @@ function init() {
 				// Адрес в зоне — разблокируем кнопку
 				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
 			} else {
-				$("[name='dostavka_info'").html("К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+79148959797' style=''>95-97-97</a>");
+				$("[name='dostavka_info'").html("<span style='color:red'>К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+79148959797' style='color:red'>95-97-97</a></span>");
 				// Адрес вне зоны — блокируем кнопку
 				$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 			}
