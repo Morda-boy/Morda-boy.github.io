@@ -22,42 +22,6 @@ var myMap;
 var deliveryZones;
 var obj;
 
-	// *** НОВОЕ: проверка попадания точки в полигон ***
-	function pointInPoly(point, polygon) {
-		var x = point[0], y = point[1], inside = false;
-		for (var i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
-			var xi = polygon[i][0], yi = polygon[i][1];
-			var xj = polygon[j][0], yj = polygon[j][1];
-			var intersect = ((yi > y) !== (yj > y)) &&
-							(x < (xj - xi) * (y - yi) / (yj - yi) + xi);
-			if (intersect) inside = !inside;
-		}
-		return inside;
-	}
-
-	// *** НОВОЕ: проверка попадания в любую зону из GeoJSON ***
-	function isInAnyZone(lon, lat, callback) {
-		fetch('https://morda-boy.github.io/gk138-04-04-2026.geojson')
-			.then(function(r) { return r.json(); })
-			.then(function(data) {
-				var found = false;
-				for (var i = 0; i < data.features.length; i++) {
-					var f = data.features[i];
-					var polys = f.geometry.type === 'Polygon'
-						? [f.geometry.coordinates[0]]
-						: f.geometry.coordinates.map(function(p) { return p[0]; });
-					for (var k = 0; k < polys.length; k++) {
-						if (pointInPoly([lon, lat], polys[k])) {
-							found = true;
-							break;
-						}
-					}
-					if (found) break;
-				}
-				callback(found);
-			});
-	}
-
 function init() {
 	myMap = new ymaps.Map('map__0', {
 			center: [104.275385, 52.277419],
@@ -92,7 +56,7 @@ function init() {
 			obj.properties.set('balloonContent', obj.properties.get('description'));
 		});
 
-		// *** НОВОЕ: при смене варианта доставки — разблокируем кнопку ***
+		// При смене варианта доставки — разблокируем кнопку
 		$('input[name="deliveryvar"]').on('change', function() {
 			if ($(this).val() !== 'Доставка (до подъезда)') {
 				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
@@ -239,26 +203,13 @@ function init() {
 						setData(obj);
 					});
 				}
+				// Адрес в зоне — разблокируем кнопку
+				$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
 			} else {
 				$("[name='dostavka_info'").html("К сожалению, ваш адрес не входит в зоны нашей доставки. Но, мы обязательно что-нибудь придумаем! Просто позвоните нам по тел <a href='tel:+73952746486' style=''>95-97-97</a>");
+				// Адрес вне зоны — блокируем кнопку
+				$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
 			}
-
-			// *** НОВОЕ: дополнительно проверяем по нашему GeoJSON и блокируем кнопку ***
-			var lon = parseFloat(suggestion.data.geo_lon);
-			var lat = parseFloat(suggestion.data.geo_lat);
-			$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
-
-			isInAnyZone(lon, lat, function(inZone) {
-				if (inZone) {
-					$('.t-submit').prop('disabled', false).css('opacity', '1').css('pointer-events', 'auto');
-				} else {
-					$("[name='dostavka_info']").html(
-						'<span style="color:red">Ваш адрес не входит в зону доставки. ' +
-						'Позвоните нам: <a href="tel:+73952959797">95-97-97</a></span>'
-					);
-					$('.t-submit').prop('disabled', true).css('opacity', '0.5').css('pointer-events', 'none');
-				}
-			});
 		},
 		onSuggestionsFetch: function(suggestion){
 			console.log("подсказки загрузились");
